@@ -1,0 +1,118 @@
+$tablet: 1024px;
+$mobile-sm:600px;
+form {
+  margin-top: 6%;
+}
+.elementosLinha {
+  display: flex;
+  padding: 12px;
+  margin-left: 8.8%;
+  justify-content: space-around;
+}
+.selectIncriSocial {
+  font-size: 20px;
+  margin-right: 20px;
+  width: 35%;
+}
+.elementosColuna {
+  display: flex;
+  display: block;
+  flex-direction: column;
+  margin-left: 2%;
+}
+.campoRazaoSocial {
+  margin-left: 12.9%;
+  width: 70%;
+  margin-top: 1%;
+}
+.campoTelefone {
+  margin-left: 17%;
+  width: 70%;
+  margin-top: 2%;
+}
+
+.campoEmail {
+  margin-left: 20%;
+  width: 70%;
+  margin-top: 2%;
+}
+.campoVendedor {
+  margin-left: 15.7%;
+  width: 70%;
+  margin-top: 2%;
+}
+.campoDataCadastro {
+  margin-left: 8.6%;
+  width: 70%;
+  margin-top: 2%;
+}
+
+label {
+  white-space: nowrap;
+  font-size: 1.5rem;
+  margin-bottom: 7px;
+}
+input {
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  -moz-appearance: textfield;
+
+  width: 50%;
+  margin-left: 8px;
+  padding: 8px 29px 4px;
+  box-sizing: border-box;
+  border: unset;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px #2d2b2b9f inset;
+  background-color: #d9d9d9;
+  height: 35px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+select {
+  width: 50%;
+  margin-left: 8px;
+  padding: 8px 29px 4px;
+  box-sizing: border-box;
+  border: unset;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px #2d2b2b9f inset;
+  background-color: #d9d9d9;
+  height: 35px;
+}
+
+.botoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  
+}
+button:disabled{
+  background-color: rgb(143, 98, 98) ;
+  opacity: 2;
+}
+
+button {
+  border: none;
+  background-color: #032246;
+  border-radius: 10px;
+  box-shadow: 2px 4px 4px #0000009f;
+  color: #272626;
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: -5px;
+  color: aliceblue;
+  width: 40px;
+}
+.botaoSalvar {
+  display: flex;
+  justify-content: center;
+  margin-top: -4.5%;
+}
+.botaoContinue {
+  margin-left: 75%;
+  margin-top: -2.2%;
+  width: 15%;
+
+}

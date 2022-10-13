@@ -1,0 +1,83 @@
+.elementosLinha {
+  display: flex;
+  padding: 12px;
+  margin-left: 8%;
+  justify-content: space-around;
+}
+.inputNumeroParcela {
+  font-size: 20px;
+  margin-right: 20px;
+  width: 10%;
+}
+.inputNumeroBoleto{
+  margin-top: 10px;
+  display: flex;
+  margin-left:6.7%;
+  width: 30%;
+}
+
+.inputValorBoleto{
+  margin-top: 10px;
+  display: flex;
+  margin-left:9%;
+  width: 27.7%;
+
+}
+
+.inputValorNegociado{
+  margin-top: 45px;
+  display: flex;
+  margin-left:8%;
+  width: 44%;
+}
+.iValorNegociado{
+  height: 40px;
+}
+
+
+
+
+
+.labelAnotacao {
+  margin-top: 2%;
+  margin-left: 2%;
+  font-size: 25px;
+  font-weight: bold;
+}
+.campoTextarea textarea {
+  margin-left: 14%;
+  margin-top: -3%;
+  width: 500px;
+  height: 100px;
+  padding: 8px 29px 4px;
+  box-sizing: border-box;
+  border: unset;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px #2d2b2b9f inset;
+  background-color: #d9d9d9;
+  font-size: 20px;
+}
+
+.labelDataRetorno {
+  margin-top: -8%;
+  margin-left: 57%;
+  font-size: 25px;
+  font-weight: bold;
+}
+.inputDataRetorno input {
+  float:left;
+  margin-top: -2.5%;
+  margin-left: 76%;
+  width: 200px;
+  padding: 8px 29px 4px;
+  box-sizing: border-box;
+  border: unset;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px #2d2b2b9f inset;
+  background-color: #d9d9d9;
+  font-size: 20px;
+}
+.botaoCliente {
+  margin-top: 7%;
+  margin-left: 50%;
+}

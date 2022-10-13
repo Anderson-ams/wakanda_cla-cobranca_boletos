@@ -1,0 +1,29 @@
+.toBar {
+  // background-color: rgb(27, 8, 71);
+  background: linear-gradient(
+    180deg,
+    #001833 83.44%,
+    rgba(0, 24, 51, 0) 96.87%
+  );
+  position: static;
+  height: 12vh;
+  align-items: center;
+  display: flex;
+  margin-bottom: 30px;
+  padding: 20px;
+  box-shadow: 0px 8px 8px rgb(10, 5, 58);
+}
+.wakanda {
+  color: white;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  font-family: Jomhuria;
+  letter-spacing: -0.02em;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
