@@ -13,5 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   justify-content: center;
   align-items: center;
 }
-`;
+`
+
+;
 
