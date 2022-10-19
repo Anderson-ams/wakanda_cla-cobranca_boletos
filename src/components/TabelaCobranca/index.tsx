@@ -1,13 +1,12 @@
-import React from "react";
-import Boleto from "../../core/BoletoCore/Boleto";
-import Cliente from "../../core/ClienteCore/Cliente";
-import Cobranca from "../../core/CobrancaCore/Conbranca";
+import React from 'react';
+
+import Cobranca from '../../core/CobrancaCore/Conbranca';
 
 interface TabelaPropsCobranca {
-    cobranca: Cobranca[];
+    cobrancas: Cobranca[];
 }
 
-function TabelaCobranca(props: /*Props*/ TabelaPropsCobranca) {
+function TabelaCobranca(props: TabelaPropsCobranca) {
     function renderizarCabecalho() {
         return (
             <>
@@ -19,13 +18,22 @@ function TabelaCobranca(props: /*Props*/ TabelaPropsCobranca) {
             </>
         );
     }
-    // function renderizarDados() {
-    //     return props.cobranca?.map();
-    // }
+    function renderizarDados() {
+        return props.cobrancas?.map((cobranca, i) => {
+            return (
+                <tr>
+                    {/* <td>{cobranca.dataDoRetorno}</td> */}
+                    <td>{cobranca.valorNegociadoAPagar}</td>
+                    <td>{cobranca.anotacaoCobranca}</td>
+                </tr>
+            )
+        });
+    }
 
     return (
         <table>
-            {renderizarCabecalho()}
+            <thead>{renderizarCabecalho()}</thead>
+            <tbody>{renderizarDados()}</tbody>
         </table>
     )
 }

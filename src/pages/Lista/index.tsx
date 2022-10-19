@@ -12,7 +12,7 @@ function CadastrosLista() {
 
   const boleto = [new Boleto("125457", "2", new Date(), 450)];
 
-  const cobranca = [new Cobranca(500, new Date(), "cliente")];
+  const cobranca = [new Cobranca(500, new Date(), "Cliente Ainda Não Pagou")];
 
   return (
     <div
@@ -28,8 +28,8 @@ function CadastrosLista() {
       </div>
       <LayoutTabela>
         <TabelaCliente clientes={cliente}></TabelaCliente>
-        <TabelaBoleto boleto={boleto}></TabelaBoleto>
-        <TabelaCobranca cobranca={cobranca}></TabelaCobranca>
+        <TabelaBoleto boletos={boleto}></TabelaBoleto>
+        <TabelaCobranca cobrancas={cobranca}></TabelaCobranca>
       </LayoutTabela>
     </div>
   );

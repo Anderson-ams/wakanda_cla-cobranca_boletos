@@ -1,14 +1,11 @@
 import React from 'react';
+
 import Boleto from '../../core/BoletoCore/Boleto';
-import Cliente from '../../core/ClienteCore/Cliente';
-import Cobranca from '../../core/CobrancaCore/Conbranca';
 
 interface TabelaPropsBoleto {
-  boleto: Boleto[]
-
+  boletos: Boleto[];
 }
 function TabelaBoleto(props: TabelaPropsBoleto) {
-
   function renderizarCabecalho() {
     return (
       <>
@@ -21,15 +18,25 @@ function TabelaBoleto(props: TabelaPropsBoleto) {
       </>
     );
   }
-  // function renderizarDados() {
-  //   props.boleto.map
-  // }
+  function renderizarDados() {
+   return props.boletos?.map((boleto, i) => {
+      return (
+        <tr>
+          <td>{boleto.numeroDoBoleto}</td>
+          <td>{boleto.numeroParcela}</td>
+          <td>{boleto.valorBoleto}</td>
+          {/* <td>{new Date(boleto)}</td> */}
+        </tr>
+      );
+    });
+  }
 
   return (
     <table>
-      {renderizarCabecalho()}
+      <thead>{renderizarCabecalho()}</thead>
+      <tbody>{renderizarDados()}</tbody>
     </table>
-  )
+  );
 }
 
 export default TabelaBoleto;
