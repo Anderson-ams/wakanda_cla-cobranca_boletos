@@ -1,41 +1,38 @@
 import React from "react";
-// import { Table } from "react-bootstrap";
+import LayoutTabela from "../../components/LayoutTabela";
+import TabelaBoleto from '../../components/TabelaBoleto';
+import TabelaCliente from "../../components/TabelaCliente";
+import TabelaCobranca from '../../components/TabelaCobranca';
+import Boleto from "../../core/BoletoCore/Boleto";
+import Cliente from "../../core/ClienteCore/Cliente";
+import Cobranca from "../../core/CobrancaCore/Conbranca";
 
-// import { Container } from './styles';
+function CadastrosLista() {
+  const cliente = [new Cliente("Anderson", 73245787)];
 
-function Cadastros() {
+  const boleto = [new Boleto("125457", "2", new Date(), 450)];
+
+  const cobranca = [new Cobranca(500, new Date(), "cliente")];
+
   return (
-
-    <table className={`
-    flex 
-    h-80 text-lg
-    `}>
-      <th
-        className={`
-          flex justify-center
-        `}
-      >
-        <tr>
-          <td>Nome do Cliente</td>
-          <td>Tel:123456789</td>
-        </tr>
-      </th>
-      <tbody className={`
-      flex
-      justify-center items-center
-      `}>
-        <tr>
-          <td>número do boleto</td>
-          <td>número da parcela</td>
-          <td>vencimento</td>
-          <td>data de retorno</td>
-          <td>valor do boleto</td>
-          <td>valor do boleto</td>
-          <td>Anotação</td>
-        </tr>
-      </tbody>
-    </table>
+    <div
+      className={`
+    h-96 flex-col  ml-5 mr-5 border-solid border-2 border-black bg-slate-50
+    w-7/9 mt-16 
+   `}
+    >
+      <div className={``}>
+        <h2 className={`text-center text-2xl font-bold pt-2`}>
+          Lista De Vizualização de Clientes
+        </h2>
+      </div>
+      <LayoutTabela>
+        <TabelaCliente clientes={cliente}></TabelaCliente>
+        <TabelaBoleto boleto={boleto}></TabelaBoleto>
+        <TabelaCobranca cobranca={cobranca}></TabelaCobranca>
+      </LayoutTabela>
+    </div>
   );
 }
 
-export default Cadastros;
+export default CadastrosLista;
