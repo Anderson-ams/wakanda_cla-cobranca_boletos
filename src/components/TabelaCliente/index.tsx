@@ -5,27 +5,19 @@ import Cobranca from '../../core/CobrancaCore/Conbranca';
 
 interface TabelaPropsCliente {
   clientes: Cliente[]
+  children?: any
+  className?: React.HTMLAttributes<HTMLDivElement> | string | undefined | any
 }
 
 
 function TabelaCliente(props: TabelaPropsCliente ) {
 
-  function renderizarCabecalho() {
-    return (
-      <>
-        <tr>
-          <th>Nome</th>
-          <th>Telefone</th>
-        </tr>
-      </>
-
-    )
-  }
+  
   function renderizarDados() {
     return props.clientes?.map((cliente, i ) => {
       return (
-        <tr key={cliente.telefoneCliente}>
-          <td>{cliente.nomeCliente} - {cliente.telefoneCliente}</td>
+        <tr className={`bg-zinc-400 `} key={cliente.telefoneCliente}>
+          {cliente.nomeCliente} - {cliente.telefoneCliente}
         </tr>
       )
     })
