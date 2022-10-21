@@ -1,10 +1,4 @@
 
-// type TituloProps = {
-//     children: string
-// }
-
-
-//VOCÊ PAROU NA AULA COMPONENTE LAYOUT MIN[8:00]
 function TituloTabela(props: any) {
     return (
         <div className='flex flex-col justify-center'>

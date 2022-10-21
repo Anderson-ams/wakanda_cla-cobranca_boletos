@@ -1,15 +1,16 @@
 export default class Cobranca {
   private valorNegociado: number;
-  private dataDeRetorno: Date;
+  private dataDeRetorno: string;
   private anotacao: string;
-  constructor(valorNegociado: number, dataDeRetorno: Date, anotacao: string) {
+  
+  constructor(valorNegociado: number, dataDeRetorno: string, anotacao: string) {
     this.valorNegociado = valorNegociado;
     this.dataDeRetorno = dataDeRetorno;
     this.anotacao = anotacao;
   }
 
   static vazio(){
-    return new Cobranca(0, new Date(), "")
+    return new Cobranca(0, "new Date()", "")
   }
 
   get valorNegociadoAPagar() {

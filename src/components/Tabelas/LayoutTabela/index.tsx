@@ -1,5 +1,6 @@
 import React from "react";
-import TituloTabela from '../TituloTabela';
+//import TituloTabela from '../TituloTabela';
+
 interface LayoutProps {
     titulo?: string
     children: any
@@ -7,7 +8,7 @@ interface LayoutProps {
 function LayoutTabela(props: LayoutProps) {
     return (
         <div
-            className={` pt-4  flex justify-center  bg-slate-400 text-center`}>
+            className={` pt-4  flex justify-center bg-slate-400 text-center`}>
                 {/* <TituloTabela>{props.titulo}</TituloTabela> */}
             <span>{props.children}</span> 
         </div>
