@@ -31,7 +31,7 @@ function TabelaBoleto(props: TabelaPropsBoleto) {
 
   return (
     <table className={`w-full`}>
-      <thead className={`border-b-2`}>{renderizarCabecalho()}</thead>
+      <thead className={`border-b-2 border-black`}>{renderizarCabecalho()}</thead>
       <tbody>{renderizarDados()}</tbody>
     </table>
   );

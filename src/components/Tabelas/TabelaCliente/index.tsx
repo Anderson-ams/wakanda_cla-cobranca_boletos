@@ -8,6 +8,7 @@ interface TabelaPropsCliente {
 }
 
 function TabelaCliente(props: TabelaPropsCliente) {
+  
   const exibirAcoes = props.clienteSelecionado;
   function renderizarDados() {
     return props.clientes?.map((cliente, i) => {
@@ -31,13 +32,7 @@ function TabelaCliente(props: TabelaPropsCliente) {
               className={`ml-6 w-20 h-6 text-center text-xs`}
             >
               EDITAR
-            </button>
-          ) : (
-            false
-          )
-        ) : (
-          false
-        )}
+            </button>) : (false)) : (false)}
       </td>
     );
   }

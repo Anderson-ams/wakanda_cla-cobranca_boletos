@@ -1,18 +1,30 @@
 import React from "react";
 //import TituloTabela from '../TituloTabela';
+import Box from '@mui/material/Box';
+
 
 interface LayoutProps {
     titulo?: string
     children: any
-} 
+
+}
 function LayoutTabela(props: LayoutProps) {
     return (
-        <div
-            className={` pt-4  flex justify-center bg-slate-400 text-center`}>
+        <Box className={` pt-4 overflow-auto w-screen  flex justify-center text-center`}
+            sx={{
+                maxWidth: 50 / 51,
+                maxHeight: 11 / 12,
+                // backgroundColor: 'primary.dark',
+                mt: -1,
+                ml: 2
+            }} >
+            <div
+                className={``}>
                 {/* <TituloTabela>{props.titulo}</TituloTabela> */}
-            <span>{props.children}</span> 
-        </div>
+                <span>{props.children}</span>
+            </div>
+        </Box>
     );
-} 
+}
 
 export default LayoutTabela;

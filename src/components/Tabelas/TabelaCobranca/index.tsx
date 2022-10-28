@@ -32,7 +32,7 @@ function TabelaCobranca(props: TabelaPropsCobranca) {
 
     return (
         <table className={`w-full`}>
-            <thead className={`border-b-2 w-screen`}>{renderizarCabecalho()}</thead>
+            <thead className={`border-b-2 border-black w-screen`}>{renderizarCabecalho()}</thead>
             <tbody>{renderizarDados()}</tbody>
         </table>
     )
