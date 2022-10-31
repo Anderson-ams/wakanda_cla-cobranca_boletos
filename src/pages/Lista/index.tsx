@@ -1,9 +1,10 @@
+import Container from "@mui/material/Container";
 import LayoutTabela from "../../components/Tabelas/LayoutTabela";
 import TabelaDTO from "../../components/Tabelas/TabelaDTO";
+import TituloTabela from "../../components/TituloTabela";
 import AgregadosDeClientes from "../../core/AgregadosCliente/AgregadosDeCliente";
 import Cliente from "../../core/ClienteCore/Cliente";
-import Container from "@mui/material/Container";
-
+import "./index.css";
 /*
     AL: COMPONENTE TABELA #2
 */
@@ -32,15 +33,14 @@ function CadastrosLista() {
         <div
           className={`
     h-96 flex-col ml-5 >
-    mr-5 border-solid border-2 border-black  bg-slate-50
+    mr-5 border-solid border-2 border-black  bg-gray-200
     w-7/9 mt-24 
    `}
         >
-          <div>
-            <h2 className={`text-center text-2xl mt-1 font-bold`}>
-              Lista De Vizualização de Clientes
-            </h2>
-          </div>
+          <TituloTabela>
+            Lista De Vizualização de Clientes
+          </TituloTabela>
+          <button className="botao">Filtrar Data Icial/Vencimento</button>
 
           <LayoutTabela>
             <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
@@ -50,23 +50,6 @@ function CadastrosLista() {
             <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
             <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
           </LayoutTabela>
-          {/* <div
-          className={`flex-col w-11/12 flex m-auto border-black
-          border-2  border-x-2 border-y-2`}
-        > 
-           <div className={`flex bg-zinc-400 border-black   justify-center   `}> 
-            <TabelaCliente
-              clientes={cliente}
-              clienteSelecionado={clienteSelecionado}
-            ></TabelaCliente>
-           </div> 
-           <div
-            className={`pl-6 pr-6  flex border-black border-2 justify-center  box-border`}
-          > 
-            <TabelaBoleto boletos={boleto}></TabelaBoleto>
-            <TabelaCobranca cobrancas={cobranca}></TabelaCobranca>
-           </div>
-        </div> */}
         </div>
       </Container>
     </>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ClienteContext } from './common/context/Cliente';
 import Boleto from './pages/Boleto';
 import CadastrosLista from './pages/Lista';
 import Cliente from './pages/Cliente';
