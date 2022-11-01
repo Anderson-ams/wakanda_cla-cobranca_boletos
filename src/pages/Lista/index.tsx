@@ -6,6 +6,7 @@ import TabelaDTO from "../../components/Tabelas/TabelaDTO";
 import TituloTabela from "../../components/TituloTabela";
 import AgregadosDeClientes from "../../core/AgregadosCliente/AgregadosDeCliente";
 import Cliente from "../../core/ClienteCore/Cliente";
+
 /*
     AL: COMPONENTE TABELA #2
 */
@@ -32,11 +33,11 @@ function CadastrosLista() {
     <>
       <Container maxWidth="xl">
         <Box className={`border-black border-solid border-2 mt-16 h-5/6`}>
-          <div className={`flex justify-center`}>
+          <div className={`flex  justify-center`}>
             <TituloTabela />
           </div>
           <div>
-            
+            <button>filtrar data inicial/vencimento</button>
           </div>
           <section className={`mt-1 overflow-auto h-96 border-solid border-1`}>
             <LayoutTabela>
