@@ -71,27 +71,3 @@ function TabelaDTO(props: TabelaDTOProps) {
 }
 
 export default TabelaDTO;
-
-// <>
-// <table className='border'>
-//         <tr>
-//             <th>Número do Boleto</th>
-//             <th >Número da Parcela</th>
-//             <th >Valor do Boleto</th>
-//             <th >Vencimento</th>
-//             <th >Valor Negociado</th>
-//             <th >Data de Retorno</th>
-//             <th >Anotação</th>
-//         </tr>
-
-//     <tr>
-//         <td>{dtoClientes.numeroDocumentoBoleto}</td>
-//         <td>{dtoClientes.parcelaBoleto}</td>
-//         <td>{dtoClientes.saldoDevedorDoBoleto}</td>
-//         <td>{dtoClientes.vencimentoDoBoleto}</td>
-//         <td>{dtoClientes.valorNegociadoCobranca}</td>
-//         <td>{dtoClientes.dataDeRetornoCobrnaca}</td>
-//         <td>{dtoClientes.anotacaoCobranca}</td>
-//     </tr>
-// </table>
-// </>

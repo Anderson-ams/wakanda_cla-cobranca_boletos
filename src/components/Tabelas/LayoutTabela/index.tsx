@@ -6,11 +6,12 @@ import Box from '@mui/material/Box';
 interface LayoutProps {
     titulo?: string
     children: any
+    className?: React.ElementType | any
 
 }
 function LayoutTabela(props: LayoutProps) {
     return (
-        <Box className={` pt-4 overflow-auto w-screen  flex justify-center text-center`}
+        <Box className={` pt-4  w-screen  flex justify-center text-center`}
             sx={{
                 maxWidth: 50 / 51,
                 maxHeight: 7 / 8,
@@ -18,9 +19,7 @@ function LayoutTabela(props: LayoutProps) {
                 mt: 1,
                 ml: 2
             }} >
-            <div
-                className={``}>
-                {/* <TituloTabela>{props.titulo}</TituloTabela> */}
+            <div>
                 <span>{props.children}</span>
             </div>
         </Box>

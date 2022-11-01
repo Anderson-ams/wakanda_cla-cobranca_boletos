@@ -1,8 +1,10 @@
-function FiltraDados(){
+import './index.css'
+function FiltraDados() {
     return (
-    <h2>
-        Filtrar Data Icial/Vencimento
-    </h2>
+        <button className='botao'>
+            Filtrar Data Icial/Vencimento
+        </button>
+
     );
 }
 export default FiltraDados
