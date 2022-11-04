@@ -50,26 +50,5 @@ function CadastrosLista() {
     </>
   );
 }
-
 export default CadastrosLista;
 
-/*
- *  <button>Botão</button>
-      <Container maxWidth="xl">
-        <div className={` absolute ml-96 mr-96  flex justify-center `}><TituloTabela /></div>
-        <div
-          className={`h-96 flex-col ml-5 mr-5 border-solid 
-          border-2  border-black  overflow-auto bg-gray-200 w-7/9 mt-9`}
-        >
-
-          <LayoutTabela>
-            <div className=''>
-              <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
-              <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
-              <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
-            </div>
-          </LayoutTabela>
-        </div>
-      </Container>
- * 
- */
