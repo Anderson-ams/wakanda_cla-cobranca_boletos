@@ -1,0 +1,28 @@
+.divBotaoFiltro {
+  margin-left: 0.8rem;
+  display: flex;
+  justify-content: start;
+}
+.botao_filtro {
+   font-size: 0.875rem;
+   line-height: 1.25rem;
+   font-weight: 700;
+   width: 13rem;
+   margin-top: 0.8rem;
+   color: black;
+   background-color:rgb(209, 213, 219);
+}
+@media (max-width: 1003px) {
+   .botao_filtro {
+      width: 11rem;
+    }
+}  
+@media (max-width: 900px) {
+   .divBotaoFiltro {
+      width: 11rem;
+      display: flex;
+      justify-content: center;
+    }
+
+}
+

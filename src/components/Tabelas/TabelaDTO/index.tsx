@@ -1,29 +1,12 @@
-import {
-  Paper,
-  Table,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
-import Container from "@mui/material/Container";
 import AgregadosDeClientes from "../../../core/AgregadosCliente/AgregadosDeCliente";
 
 interface TabelaDTOProps {
   clienteAgregados: AgregadosDeClientes[];
 }
 function TabelaDTO(props: TabelaDTOProps) {
-  // function renderizarCabecalho() {
-  //     return props.clienteAgregados?.map((clientesDTO, i) => {
-  //         return (
-
-  //         );
-  //     })
-  // }
-
   function rendererizarDados() {
     return props.clienteAgregados?.map((dtoClientes, i) => {
       return (
-        //    <TableContainer className='table-responsive' sx={{ maxHeight: 125,  width: 1250, }}>
         <>
           <table>
             <tr className={`table mb-0 border-2 bg-slate-400 border-black`}>

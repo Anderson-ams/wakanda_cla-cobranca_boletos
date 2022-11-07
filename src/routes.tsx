@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Boleto from './pages/Boleto';
-import CadastrosLista from './pages/Lista';
+import HomePage from './pages/HomePage';
 import Cliente from './pages/Cliente';
 import Cobranca from './pages/Cobranca';
 import CollapsibleTable from './pages/PaginaTeste';
+import Toobar from './components/Cabecalho';
 
 export default function Rotas() {
     // const [nomeCliente, setNomeCliente] = useState("")
 
     return (
         <div>
+
+
             <BrowserRouter>
                 <Routes>
-                    <Route path="/teste" element={<CollapsibleTable />} />
-                    <Route path="/" element={<CadastrosLista />} />
+                    <Route path="/" element={<HomePage />} />
                     <Route path="/cliente" element={<Cliente />} />
                     <Route path='/boleto' element={<Boleto />} />
                     <Route path='/cobranca' element={<Cobranca />} />
