@@ -5,7 +5,7 @@ import style from './Botao.module.scss';
 
 
 type IProps = {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     type?: "button" | "submit" | "reset" | undefined,
     onClick?: () => void,
     className?: React.HTMLAttributes<HTMLDivElement> | string | undefined | any    
