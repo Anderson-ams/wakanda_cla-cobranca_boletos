@@ -57,15 +57,20 @@ function HomePage() {
 
   /**func do calendario */
   const [data, setData] = useState("");
-  const setFiltroDataTabela = useSetRecoilState<IFiltroDeTabela>(filtroDeTabela);
+  const setFiltroDataTabela =
+    useSetRecoilState<IFiltroDeTabela>(filtroDeTabela);
   const handleTeste = (evento: React.FormEvent<HTMLFormElement>) => {
-    evento.preventDefault()
+    // evento.preventDefault()
     console.log(setData, data);
-  }
+  };
   return (
     <>
+      <div className="div_botao_importa-vendedor">
+        <button className="botao_importa">Importar Titulos</button>
+        <button className="botao_vendedor">Vendedor</button>
+      </div>
       <Container maxWidth="xl">
-        <Box className={`border-black -mb-10 border-solid border-2 mt-16`}>
+        <Box className={`border-black -mb-12 border-solid border-2 mt-9`}>
           <section className={`flex-grow`}>
             <div className="divBotaoFiltro">
               <button onClick={handleOpen} className="botao_filtro">
@@ -85,7 +90,7 @@ function HomePage() {
                         className={` flex justify-center w-80 h-10`}
                         name="data"
                         type="date"
-                        onChange={evento => setData(evento.target.value)}
+                        onChange={(evento) => setData(evento.target.value)}
                         placeholder="Por data"
                         value={data}
                       />
@@ -96,7 +101,6 @@ function HomePage() {
                   </form>
                 </Box>
               </Modal>
-
             </div>
 
             <div className={`flex justify-center -mt-9`}>

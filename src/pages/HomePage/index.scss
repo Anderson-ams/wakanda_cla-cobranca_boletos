@@ -4,25 +4,47 @@
   justify-content: start;
 }
 .botao_filtro {
-   font-size: 0.875rem;
-   line-height: 1.25rem;
-   font-weight: 700;
-   width: 13rem;
-   margin-top: 0.8rem;
-   color: black;
-   background-color:rgb(209, 213, 219);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  width: 13rem;
+  margin-top: 0.8rem;
+  color: black;
+  background-color: #f4f4f4;
 }
 @media (max-width: 1003px) {
-   .botao_filtro {
-      width: 11rem;
-    }
-}  
+  .botao_filtro {
+    width: 11rem;
+  }
+}
 @media (max-width: 900px) {
-   .divBotaoFiltro {
-      width: 11rem;
-      display: flex;
-      justify-content: center;
-    }
-
+  .divBotaoFiltro {
+    width: 11rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+.div_botao_importa-vendedor {
+  margin-top: 15px;
+}
+.botao_importa {
+  background-color: #f4f4f4;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  width: 13rem;
+  height: 2rem;
+  color: black;
+  margin-left: 4rem;
 }
 
+.botao_vendedor {
+  background-color: #f4f4f4;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  width: 13rem;
+  height: 2rem;
+  color: black;
+  margin-left: 15px;
+}
