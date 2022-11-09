@@ -65,8 +65,8 @@ function HomePage() {
   return (
     <>
       <section className="div_botao_importa-vendedor">
-          <button className="botao_importa">Importar Titulos</button>
-          <button className="botao_vendedor">Vendedor</button>
+        <button className="botao_importa">Importar Titulos</button>
+        <button className="botao_vendedor">Vendedor</button>
       </section>
 
       <Container maxWidth="xl">
@@ -117,10 +117,14 @@ function HomePage() {
           </section>
         </Box>
       </Container>
-
-      <div className="flex justify-center">
-        <Botao onClick={() => navigate("/cliente")}>Novo Cliente</Botao>
-      </div>
+      <section className="botoes_Cliente-Titulo">
+        <div >
+          <Botao onClick={() => navigate("/cliente")}>Novo Cliente</Botao>
+        </div>
+        <div>
+          <Botao onClick={() => navigate("/boleto")}>Titulo</Botao>
+        </div>
+      </section>
     </>
   );
 }

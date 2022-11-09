@@ -61,3 +61,18 @@
   color: black;
   margin-left: 15px;
 }
+
+.botoes_Cliente-Titulo {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 24rem 0 24rem;
+  margin-top: 4rem;  
+}
+@media (max-width: 1071px) {
+  .botoes_Cliente-Titulo{
+    margin: 0 16rem 0 16rem;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 4rem;  
+  }
+}
