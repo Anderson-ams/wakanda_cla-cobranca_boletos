@@ -1,13 +1,16 @@
+
+/*Botao de filtro de data*/
 .divBotaoFiltro {
   margin-left: 0.8rem;
   display: flex;
   justify-content: start;
 }
 .botao_filtro {
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.25rem;
-  font-weight: 700;
-  width: 13rem;
+//   font-weight: 700;
+  height: 2rem;
+  width: 14rem;
   margin-top: 0.8rem;
   color: black;
   background-color: #f4f4f4;
@@ -15,23 +18,33 @@
 @media (max-width: 1003px) {
   .botao_filtro {
     width: 11rem;
+    height: 2rem;
+    font-size: 0.800rem;
   }
 }
 @media (max-width: 900px) {
   .divBotaoFiltro {
     width: 11rem;
-    display: flex;
-    justify-content: center;
   }
 }
+@media (max-width: 840px) {
+  .botao_filtro {
+    width: 9rem;
+    height: 2.1rem; 
+    font-size: 0.900rem;
+    word-break: break-word;
+  }
+}
+
+/*Botões fora do container de visualização das tabelas */
 .div_botao_importa-vendedor {
   margin-top: 15px;
 }
 .botao_importa {
   background-color: #f4f4f4;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   line-height: 1.25rem;
-  font-weight: 700;
+//   font-weight: 700;
   width: 13rem;
   height: 2rem;
   color: black;
@@ -40,9 +53,9 @@
 
 .botao_vendedor {
   background-color: #f4f4f4;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   line-height: 1.25rem;
-  font-weight: 700;
+//   font-weight: 700;
   width: 13rem;
   height: 2rem;
   color: black;

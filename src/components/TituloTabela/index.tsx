@@ -1,9 +1,9 @@
 function TituloTabela(props: any) {
     return (
         <>
-            <div className=' text-3xl mt-1 font-bold'>
+            <div className=' text-3xl mb-2 mt-2 font-bold '>
                 <h1>
-                Lista De Vizualização de Clientes
+                    Relatório de títulos em atraso
                 </h1>
 
             </div>

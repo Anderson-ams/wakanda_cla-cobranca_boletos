@@ -42,14 +42,13 @@ function HomePage() {
       500,
       "",
       200,
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur reiciendis quibusdam eum et enim reprehenderit ab iste id voluptates, quidem recusandae,Lorem ipsum dolor, sit amet nemo corrupti k",
+      "Lorem ipsum dolor, si, sit amet nemo corrupti k",
       0
     ),
   ];
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-
   const handleClose = () => setOpen(false);
 
   /**funcao da navecação do botão Cliente */
@@ -65,16 +64,17 @@ function HomePage() {
   };
   return (
     <>
-      <div className="div_botao_importa-vendedor">
-        <button className="botao_importa">Importar Titulos</button>
-        <button className="botao_vendedor">Vendedor</button>
-      </div>
+      <section className="div_botao_importa-vendedor">
+          <button className="botao_importa">Importar Titulos</button>
+          <button className="botao_vendedor">Vendedor</button>
+      </section>
+
       <Container maxWidth="xl">
-        <Box className={`border-black -mb-12 border-solid border-2 mt-9`}>
-          <section className={`flex-grow`}>
+        <Box className={`border-black -mb-14 border-solid border-2 mt-9`}>
+          <section className={`flex-grow `}>
             <div className="divBotaoFiltro">
               <button onClick={handleOpen} className="botao_filtro">
-                filtrar data inicial/vencimento
+                Filtrar data inicial/vencimento
               </button>
 
               {/*Modal do Filtro */}
@@ -102,13 +102,15 @@ function HomePage() {
                 </Box>
               </Modal>
             </div>
-
-            <div className={`flex justify-center -mt-9`}>
+            {/*Titulo (relatorio de titulo) */}
+            <div className={`flex justify-center -mt-11 bg-slate-300`}>
               <TituloTabela />
             </div>
-            {/* Caixa de pre-vizualização da tabela */}
+            {/* Caixa de pre-vizualização das tabelas */}
             <section className={` overflow-auto h-80 border-solid border-1`}>
               <LayoutTabela>
+                <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
+                <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
                 <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
               </LayoutTabela>
             </section>

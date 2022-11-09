@@ -9,7 +9,7 @@ function TabelaDTO(props: TabelaDTOProps) {
       return (
         <>
           <table>
-            <tr className={`table mb-0 border-2 bg-slate-400 border-black`}>
+            <tr className={`table mb-0 border-2 bg-slate-300 border-black`}>
               <td>
                 {dtoClientes.nomeDoCliente} - {dtoClientes.telefoneDoCliente}
               </td>
