@@ -8,7 +8,7 @@ export default class AgregadosDeClientes {
     private dataVencimento: string
     private valorNegociado: number
     private anotacao: string
-    private dataDeRetorno: number
+    private dataDeRetorno: string
 
 
     constructor(
@@ -20,7 +20,7 @@ export default class AgregadosDeClientes {
         dataVencimento: string,
         valorNegociado: number,
         anotacao: string,
-        dataDeRetorno: number) {
+        dataDeRetorno: string) {
         this.nomeCliente = nomeCliente
         this.telefone = telefone
         this.saldoDevedor = saldoDevedor
@@ -33,7 +33,7 @@ export default class AgregadosDeClientes {
     }
 
     static vazio(){
-        return new AgregadosDeClientes("","","","",0,"",0,"",0,)
+        return new AgregadosDeClientes("", "","","",0,"",0,"","")
       }
     
 

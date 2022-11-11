@@ -22,7 +22,7 @@ function CadastrosLista() {
   // ];
 
   const clienteDTO = [
-    new AgregadosDeClientes("Cliente Zé", "7398245577", "BLA", "BLA", 500, "", 200, "Anotação", 0),
+    new AgregadosDeClientes("Cliente Zé", "7398245577", "BLA", "BLA", 500, "", 200, "Anotação", "0"),
   ];
 
   function clienteSelecionado(cliente: Cliente) {
