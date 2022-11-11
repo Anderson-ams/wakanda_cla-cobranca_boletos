@@ -108,11 +108,8 @@ button {
 }
 .botaoSalvar {
   display: flex;
-  justify-content: center;
-  margin-top: -4.5%;
+  justify-content: space-evenly;
+  margin: 0 24rem 0 24rem;
+  margin-top: 1.5rem;
 }
-.botaoContinue {
-  margin-left: 75%;
-  margin-top: -2.2%;
-  width: 15%;
-}
+

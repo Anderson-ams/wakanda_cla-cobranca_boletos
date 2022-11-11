@@ -3,7 +3,7 @@ import "./index.scss";
 import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
@@ -14,6 +14,8 @@ import TituloTabela from "../../components/TituloTabela";
 import AgregadosDeClientes from "../../core/AgregadosCliente/AgregadosDeCliente";
 import { IFiltroDeTabela } from "../../utils/interfaces/IFiltroTabela";
 import { filtroDeTabela } from "../../utils/state/atom";
+import { resolve } from 'path';
+import { rejects } from 'assert';
 
 /*
     AL: COMPONENTE TABELA #2
@@ -46,15 +48,53 @@ function HomePage() {
       0
     ),
   ];
+  /*config. modal import*/
+  const [abrirModal_import, setAbrirModal_import] = useState(false);
+  const manipuladorParaAbrirImport = () => setAbrirModal_import(true);
+  const manipuladorParaFecharImport = () => setAbrirModal_import(false);
+  /*funcs de import do csv*/
+  const [arquivo, setArquivo] = useState<File | null>();
+  const fileReader = new FileReader();
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const capturarArquivos = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setArquivo(e.target.files?.[0] || null);
+  };
 
-  /**funcao da navecação do botão Cliente */
+  const submeterArquivo = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (arquivo) {
+      fileReader.onload = function (e) {
+        const saidaCSV = e.target?.result;
+        let  falie = saidaCSV
+      };
+      fileReader.readAsText(arquivo);
+    }
+    const f = fileToBase64(arquivo)
+    console.log(f);
+    
+  };
+
+  const fileToBase64 = (file: File | Blob | any): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+     resolve(reader.result as string);
+    };
+
+    reader.readAsDataURL(file);
+    reader.onerror = reject;
+  });
+
+
+  /*config. modal filtro data */
+  const [abrirModal_filtro, setAbrirModal_filtro] = useState(false);
+  const manipuladorParaAbrirFiltro = () => setAbrirModal_filtro(true);
+  const manipuladorParaFecharFiltro = () => setAbrirModal_filtro(false);
+
+  /**cont de navecação de rotas */
   const navigate = useNavigate();
 
-  /**func do calendario */
+  /**func do calendario (Continuar no curso da alura)*/
   const [data, setData] = useState("");
   const setFiltroDataTabela =
     useSetRecoilState<IFiltroDeTabela>(filtroDeTabela);
@@ -64,21 +104,54 @@ function HomePage() {
   };
   return (
     <>
+      {/*Botoes de import e vendedor */}
       <section className="div_botao_importa-vendedor">
-        <button className="botao_importa">Importar Titulos</button>
-        <button className="botao_vendedor">Vendedor</button>
+        <button onClick={manipuladorParaAbrirImport} className="botao_importa">
+          Importar Titulos
+        </button>
+        {/*Modal de import de Titulos*/}
+        <Modal open={abrirModal_import} onClose={manipuladorParaFecharImport}>
+          <Box sx={estiloModal}>
+            <input
+              type="file"
+              accept=".csv"
+              onChange={capturarArquivos}
+              className="w-96 text-sm flex justify-center h-14 pt-3"
+            />
+            {/* <div> <CircularProgress/> </div> */}
+            <div className='flex justify-center mt-36'>
+              <button className='w-28'
+                onClick={(evento) => {
+                  submeterArquivo(evento);
+                }}
+              >
+                Importar
+              </button>
+            </div>
+          </Box>
+        </Modal>
+
+        <button onClick={() => navigate("/cliente")} className="botao_vendedor">
+          Vendedor
+        </button>
       </section>
 
       <Container maxWidth="xl">
         <Box className={`border-black -mb-14 border-solid border-2 mt-9`}>
           <section className={`flex-grow `}>
             <div className="divBotaoFiltro">
-              <button onClick={handleOpen} className="botao_filtro">
+              <button
+                onClick={manipuladorParaAbrirFiltro}
+                className="botao_filtro"
+              >
                 Filtrar data inicial/vencimento
               </button>
 
-              {/*Modal do Filtro */}
-              <Modal open={open} onClose={handleClose}>
+              {/*Modal do Filtro por Data*/}
+              <Modal
+                open={abrirModal_filtro}
+                onClose={manipuladorParaFecharFiltro}
+              >
                 <Box sx={estiloModal}>
                   <form className={` flex-wrap `} onSubmit={handleTeste}>
                     <p className="text-3xl font-serif mb-8 -mt-6 text-center">
@@ -102,11 +175,11 @@ function HomePage() {
                 </Box>
               </Modal>
             </div>
-            {/*Titulo (relatorio de titulo) */}
+            {/*Titulo (Relatório de títulos em atraso) */}
             <div className={`flex justify-center -mt-11 bg-slate-300`}>
               <TituloTabela />
             </div>
-            {/* Caixa de pre-vizualização das tabelas */}
+            {/* Caixa de pre-vizualização das tabelas/dados */}
             <section className={` overflow-auto h-80 border-solid border-1`}>
               <LayoutTabela>
                 <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
@@ -118,7 +191,7 @@ function HomePage() {
         </Box>
       </Container>
       <section className="botoes_Cliente-Titulo">
-        <div >
+        <div>
           <Botao onClick={() => navigate("/cliente")}>Novo Cliente</Botao>
         </div>
         <div>

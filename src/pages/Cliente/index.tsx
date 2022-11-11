@@ -66,28 +66,6 @@ const Cliente = () => {
     );
   };
 
-  /*função para validar se campos estão preenchidos!
-  const onNext = () => {
-    if (
-      codCliente &&
-      inscricaoSocial &&
-      razaoSocial &&
-      telefone &&
-      email &&
-      vendedor &&
-      dataDoCadastro !== ""
-    ) {
-      console.log("onNext");
-      navigate("/boleto");
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "É NECESSÁRIO PREENCHER TODOS OS CAMPOS PARA CONTINUAR",
-      });
-    }
-  };*/
-
   return (
     <form onSubmit={salvarDadoInput}>
       <section className={style.elementosLinha}>
@@ -181,8 +159,11 @@ const Cliente = () => {
           />
         </div>
       </section>
-      <section>
-        <div className={style.botaoSalvar}>
+      <section className={style.botaoSalvar}>
+        <div>
+          <Botao onClick={() => navigate("/")}>CANCELAR</Botao>
+        </div>
+        <div>
           <Botao>SALVAR</Botao>
         </div>
       </section>
