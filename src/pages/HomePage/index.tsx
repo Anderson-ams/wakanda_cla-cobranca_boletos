@@ -3,7 +3,8 @@ import "./index.scss";
 import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
@@ -14,9 +15,6 @@ import TituloTabela from "../../components/TituloTabela";
 import AgregadosDeClientes from "../../core/AgregadosCliente/AgregadosDeCliente";
 import { IFiltroDeTabela } from "../../utils/interfaces/IFiltroTabela";
 import { filtroDeTabela } from "../../utils/state/atom";
-import { resolve } from "path";
-import { rejects } from "assert";
-import state from "sweetalert/typings/modules/state";
 
 /*
     AL: COMPONENTE TABELA #2
@@ -50,50 +48,62 @@ function HomePage() {
     ),
   ];
 
-  /*Modal de import de Titulos*/
+  /*Modal de import de CSV*/
   const [abrirModal_import, setAbrirModal_import] = useState(false);
   const manipuladorParaAbrirImport = () => setAbrirModal_import(true);
   const manipuladorParaFecharImport = () => setAbrirModal_import(false);
-  /*funcs de import do csv*/
-
-  const [file, setFile] = useState<File | any>();
-  function getBase64(file: File) {
-    return new Promise((resolve) => {
-      let fileInfo;
-      let baseURL = undefined;
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        console.log("Arquivo CSV", reader);
-        baseURL = reader.result;
-        console.log(baseURL);
-        resolve(baseURL);
-      };
-      console.log("ARQUIVO CSV CONVERTIDO", fileInfo);
-    });
+  /*Inport de CSV*/
+  const [fileBase64, setFileBase64] = useState<string>("");
+  const idCliente = localStorage.getItem("idCliente");
+  function formSubmit(e: any) {
+    e.preventDefault();
+    console.log("AQUIVO CONVERTIDO", { fileBase64 });
+    const data = {
+      data: fileBase64.replace("text/csv,", ""),
+    };
+      axios.post(
+        "gestao-de-cobranca/api/v1/cliente/" +idCliente +"/boleto/cadastro-boletos",data
+      ).then((res) => {
+        /* Coloque aqui Swal alert de confirmação de import */
+      }).catch((ress) => {
+        alert("ERROR");
+      }) 
   }
-  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log(e.target.files?.[0] || null);
-    let fileCSV = file;
-    fileCSV = e.target.files?.[0] || null || File;
-    getBase64(fileCSV)
-      .then((result) => {
-        file["base64"] = result;
-        // console.log("@@@@", file, "@@@");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    // setFile({
-    //   file: e.target.files?.[0] || null
-    // });
-  };
+  function convertFile(files: FileList | null) {
+    if (files) {
+      const fileRef = files[0] || "";
+      const fileType: string = fileRef.type || "";
+      console.log("o arquivo do tipo ", fileType);
+      const reader = new FileReader();
+      reader.readAsBinaryString(fileRef);
+      reader.onload = (ev: any) => {
+        setFileBase64(`${fileType},${btoa(ev.target.result)}`);
+        console.log("AQUI", fileBase64);
+      };
+    }
+  }
+
   /*Modal de filtro Vendedor */
-  const [abrirModal_FiltroVendedor, setabrirModal_FiltroVendedor] = useState(false);
-  const handlerOpenModalFiltroVendedor = () => setabrirModal_FiltroVendedor(true);
-  const handlerCloseModalFiltroVendedor = () => setabrirModal_FiltroVendedor(false);
+  const [abrirModal_FiltroVendedor, setabrirModal_FiltroVendedor] =
+    useState(false);
+  const handlerOpenModalFiltroVendedor = () =>
+    setabrirModal_FiltroVendedor(true);
+  const handlerCloseModalFiltroVendedor = () =>
+    setabrirModal_FiltroVendedor(false);
 
+  /*Modal de filtro Cliente */
+  const [abrirModal_FiltroCliente, setabrirModal_FiltroCliente] =
+    useState(false);
+  const handlerOpenModalFiltroCliente = () => setabrirModal_FiltroCliente(true);
+  const handlerCloseModalFiltroCliente = () =>
+    setabrirModal_FiltroCliente(false);
 
+  /*Modal de filtro Cliente */
+  const [abrirModal_FiltroTitulos, setabrirModal_FiltroTitulos] =
+    useState(false);
+  const handlerOpenModalFiltroTitulos = () => setabrirModal_FiltroTitulos(true);
+  const handlerCloseModalFiltroTitulos = () =>
+    setabrirModal_FiltroTitulos(false);
 
   /*MODAL FILTRO DATA*/
   const [abrirModal_filtroData, setAbrirModal_filtroData] = useState(false);
@@ -101,7 +111,7 @@ function HomePage() {
   const manipuladorParaFecharFiltroData = () => setAbrirModal_filtroData(false);
 
   /**NAVEGACAO DAS ROTAS */
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   /**func do calendario (Continuar no curso da alura)*/
   const [data, setData] = useState("");
@@ -111,6 +121,7 @@ function HomePage() {
     // evento.preventDefault()
     console.log(setData, data);
   };
+
   return (
     <>
       <section className="div_botao_importa-vendedor">
@@ -121,30 +132,42 @@ function HomePage() {
         {/*Modal de import CSV*/}
         <Modal open={abrirModal_import} onClose={manipuladorParaFecharImport}>
           <Box sx={estiloModal}>
-            <form>
+            <form onSubmit={formSubmit}>
               <input
                 type="file"
                 accept=".csv"
-                onChange={handleFileInputChange}
+                onChange={(e) => convertFile(e.target.files)}
                 className="w-96 text-sm flex justify-center h-14 pt-3"
               />
               <div className="flex justify-center mt-36">
-                <button className="w-28" onClick={() => console.log()}>
+                <button type="submit" className="w-28">
                   Importar
                 </button>
               </div>
             </form>
           </Box>
         </Modal>
-
         {/*Botão para o filtro de vendedor por nome*/}
-        <button onClick={handlerOpenModalFiltroVendedor} className="botao_vendedor">
+        <button
+          onClick={handlerOpenModalFiltroVendedor}
+          className="botao_vendedor"
+        >
           Vendedor
         </button>
         {/*Modal de filtro Vendedor*/}
-        <Modal open={abrirModal_FiltroVendedor} onClose={handlerCloseModalFiltroVendedor}>
+        <Modal
+          open={abrirModal_FiltroVendedor}
+          onClose={handlerCloseModalFiltroVendedor}
+        >
           <Box sx={estiloModal}>
-
+            <input
+              type="text"
+              placeholder="Filtrar por vendedor"
+              className="w-96  h-14 flex justify-center text-center"
+            />
+            <div className="flex justify-center mt-36">
+              <button className="w-28">Filtrar</button>
+            </div>
           </Box>
         </Modal>
       </section>
@@ -159,7 +182,6 @@ function HomePage() {
               >
                 Filtrar data inicial/vencimento
               </button>
-
               {/*Modal do Filtro por Data*/}
               <Modal
                 open={abrirModal_filtroData}
@@ -206,12 +228,51 @@ function HomePage() {
       </Container>
       <section className="botoes_Cliente-Titulo">
         <div>
-          <Botao onClick={() => { }}>Novo Cliente</Botao>
+          <Botao onClick={handlerOpenModalFiltroCliente}>Cliente</Botao>
+          <Modal
+            open={abrirModal_FiltroCliente}
+            onClose={handlerCloseModalFiltroCliente}
+          >
+            <Box sx={estiloModal}>
+              <p className="text-3xl font-serif mb-8 -mt-6 text-center">
+                Filtrar por Cliente
+                <hr />
+              </p>
+              <input
+                type="text"
+                placeholder="Insira o nome do Cliente"
+                className="w-96  h-14 flex justify-center text-center"
+              />
+              <div className="flex justify-center mt-28">
+                <button className="w-28">Filtrar</button>
+              </div>
+            </Box>
+          </Modal>
         </div>
         <div>
-          <Botao>Titulo</Botao>
+          <Botao onClick={handlerOpenModalFiltroTitulos}>Titulo</Botao>
+          <Modal
+            open={abrirModal_FiltroTitulos}
+            onClose={handlerCloseModalFiltroTitulos}
+          >
+            <Box sx={estiloModal}>
+              <p className="text-3xl font-serif mb-8 -mt-6 text-center">
+                Filtrar por Titulos
+                <hr />
+              </p>
+              <input
+                type="text"
+                placeholder="Insira o numero do Titulo"
+                className="w-96  h-14 flex justify-center text-center"
+              />
+              <div className="flex justify-center mt-28">
+                <button className="w-28">Filtrar</button>
+              </div>
+            </Box>
+          </Modal>
         </div>
       </section>
+      {/* <button onClick={test} >BotãoTeste</button> */}
     </>
   );
 }

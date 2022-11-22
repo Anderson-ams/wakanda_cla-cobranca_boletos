@@ -8,11 +8,11 @@ import Botao from "../../components/Botao";
 import style from "./Cliente.module.scss";
 
 const Cliente = () => {
-  const [codCliente, setCodigoCliente] = useState("");
-  const [razaoSocial, setRazaoSocial] = useState("");
+  const [cliente, setCodigoCliente] = useState("");
+  const [nomeCliente, setNomeCliente] = useState("");
   const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
-  const [vendedor, setVendedor] = useState("");
+  const [nomeVendedor, setNomeVendedor] = useState("");
   const [dataDoCadastro, setDataCadastro] = useState("");
   const opcoes = [{ texto: "" }, { texto: "CPF" }, { texto: "CNPJ" }];
   const [inscricaoSocial, setinscricaoSocial] = useState(opcoes[0].texto);
@@ -22,12 +22,12 @@ const Cliente = () => {
   const salvarDadoInput = async (evento: React.FormEvent<HTMLFormElement>) => {
     evento.preventDefault();
     const data = {
-      codCliente: codCliente,
-      razaoSocial: razaoSocial,
+      cliente: cliente,
+      nomeCliente: nomeCliente,
       inscricaoSocial: inscricaoSocial,
       telefone: telefone,
       email: email,
-      vendedor: vendedor,
+      nomeVendedor: nomeVendedor,
       dataDoCadastro: dataDoCadastro,
     };
     await axios
@@ -40,10 +40,10 @@ const Cliente = () => {
         }, 2000);
         setCodigoCliente("");
         setinscricaoSocial("");
-        setRazaoSocial("");
+        setNomeCliente("");
         setTelefone("");
         setEmail("");
-        setVendedor("");
+        setNomeVendedor("");
         setDataCadastro("");
       })
       .catch(() => {
@@ -56,12 +56,12 @@ const Cliente = () => {
       });
     console.log(
       "state:",
-      codCliente,
+      cliente,
       inscricaoSocial,
-      razaoSocial,
+      nomeCliente,
       telefone,
       email,
-      vendedor,
+      nomeVendedor,
       dataDoCadastro
     );
   };
@@ -73,7 +73,7 @@ const Cliente = () => {
           <label htmlFor="codigo-cliente">CÓDIGO CLIENTE:</label>
           <input
             className={style.inputCodigoCliente}
-            value={codCliente}
+            value={cliente}
             onChange={(e) => setCodigoCliente(e.target.value)}
             type="text"
             name="codigo-cliente"
@@ -99,11 +99,11 @@ const Cliente = () => {
       </section>
 
       <section className={style.elementosColuna}>
-        <div className={style.campoRazaoSocial}>
+        <div className={style.camponomeCliente}>
           <label htmlFor="razao-social">RAZÃO SOCIAL:</label>
           <input
-            value={razaoSocial}
-            onChange={(e) => setRazaoSocial(e.target.value)}
+            value={nomeCliente}
+            onChange={(e) => setNomeCliente(e.target.value)}
             type="text"
             name="razao-social"
             required
@@ -135,11 +135,11 @@ const Cliente = () => {
           />
         </div>
 
-        <div className={style.campoVendedor}>
+        <div className={style.campoNomeVendedor}>
           <label htmlFor="vendedor">VENDEDOR:</label>
           <input
-            value={vendedor}
-            onChange={(e) => setVendedor(e.target.value)}
+            value={nomeVendedor}
+            onChange={(e) => setNomeVendedor(e.target.value)}
             type="text"
             name="vendedor"
             required
