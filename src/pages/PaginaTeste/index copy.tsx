@@ -1,12 +1,6 @@
-import LayoutTabela from "../../components/Tabelas/LayoutTabela";
-import TabelaBoleto from "../../components/Tabelas/TabelaBoleto";
-import TabelaCliente from "../../components/Tabelas/TabelaCliente";
-import TabelaCobranca from "../../components/Tabelas/TabelaCobranca";
-import TabelaDTO from "../../components/Tabelas/TabelaDTO";
-import AgregadosDeClientes from "../../core/AgregadosCliente/AgregadosDeCliente";
-import Boleto from "../../core/BoletoCore/Boleto";
-import Cliente from "../../core/ClienteCore/Cliente";
-import Cobranca from "../../core/CobrancaCore/Conbranca";
+import LayoutTabela from '../../components/Tabelas/LayoutTabela';
+import TabelaDTO from '../../components/Tabelas/TabelaDTO';
+import AgregadosDeClientes from '../../core/AgregadosCliente/AgregadosDeCliente';
 
 /*
     AL: COMPONENTE TABELA #2
@@ -25,8 +19,8 @@ function CadastrosLista() {
     new AgregadosDeClientes("Cliente Zé", "7398245577", "BLA", "BLA", 500, "", 200, "Anotação", "0"),
   ];
 
-  function clienteSelecionado(cliente: Cliente) {
-    console.log(cliente.nomeCliente);
+  function clienteSelecionado(cliente: AgregadosDeClientes) {
+    console.log(cliente.nomeDoCliente);
   }
 
   return (

@@ -1,20 +1,19 @@
-import "./index.scss";
+import './index.scss';
 
-import { Modal } from "@mui/material";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { Modal } from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 
-import Botao from "../../components/Botao";
-import LayoutTabela from "../../components/Tabelas/LayoutTabela";
-import TabelaDTO from "../../components/Tabelas/TabelaDTO";
-import TituloTabela from "../../components/TituloTabela";
-import AgregadosDeClientes from "../../core/AgregadosCliente/AgregadosDeCliente";
-import { IFiltroDeTabela } from "../../utils/interfaces/IFiltroTabela";
-import { filtroDeTabela } from "../../utils/state/atom";
+import Botao from '../../components/Botao';
+import LayoutTabela from '../../components/Tabelas/LayoutTabela';
+import TabelaDTO from '../../components/Tabelas/TabelaDTO';
+import TituloTabela from '../../components/TituloTabela';
+import AgregadosDeClientes from '../../core/AgregadosCliente/AgregadosDeCliente';
+import { IFiltroDeTabela } from '../../utils/interfaces/IFiltroTabela';
+import { filtroDeTabela } from '../../utils/state/atom';
 
 /*
     AL: COMPONENTE TABELA #2
@@ -46,6 +45,28 @@ function HomePage() {
       "Lorem ipsum dolor sitLorem ipsum dolor sit, amet consectetur adipisicing elit.",
       "01/01/2001"
     ),
+    new AgregadosDeClientes(
+      "Anderson Matos",
+      "123456789",
+      "987654321",
+      "2",
+      100,
+      "01/01/2022",
+      70,
+      "Lorem ipsum dolor sitLorem ipsum dolor sit, amet consectetur adipisicing elit.",
+      "01/01/2001"
+    ),
+    new AgregadosDeClientes(
+      "Rebeca Fernandes",
+      "7398247",
+      "987654321",
+      "2",
+      100,
+      "01/01/2022",
+      70,
+      "Lorem ipsum dolor sitLorem ipsum dolor sit, amet consectetur adipisicing elit.",
+      "01/01/2001"
+    )
   ];
 
   /*Modal de import de CSV*/
@@ -62,7 +83,7 @@ function HomePage() {
       data: fileBase64.replace("text/csv,", ""),
     };
       axios.post(
-        "gestao-de-cobranca/api/v1/cliente/" +idCliente +"/boleto/cadastro-boletos",data
+        `gestao-de-cobranca/api/v1/cliente/${idCliente}/boleto/cadastro-boletos`,data
       ).then((res) => {
         /* Coloque aqui Swal alert de confirmação de import */
       }).catch((ress) => {
@@ -122,6 +143,10 @@ function HomePage() {
     console.log(setData, data);
   };
 
+  function clienteSelecionado(cliente: AgregadosDeClientes){
+    console.log("Retorno: ",cliente.nomeDoCliente);
+    
+  }
   return (
     <>
       <section className="div_botao_importa-vendedor">
@@ -140,7 +165,7 @@ function HomePage() {
                 className="w-96 text-sm flex justify-center h-14 pt-3"
               />
               <div className="flex justify-center mt-36">
-                <button type="submit" className="w-28">
+                <button  className="w-28 bg-none">
                   Importar
                 </button>
               </div>
@@ -217,10 +242,7 @@ function HomePage() {
             {/* Caixa de pre-vizualização das tabelas/dados */}
             <section className={` overflow-auto h-80 border-solid border-1`}>
               <LayoutTabela>
-                <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
-                <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
-                <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
-                <TabelaDTO clienteAgregados={clienteDTO}></TabelaDTO>
+                <TabelaDTO clienteAgregados={clienteDTO} clienteSelecionado={clienteSelecionado}></TabelaDTO>
               </LayoutTabela>
             </section>
           </section>
