@@ -11,9 +11,7 @@ function TabelaDTO(props: TabelaDTOProps, dtoClientes: AgregadosDeClientes) {
     return props.clienteAgregados?.map((dtoClientes, i) => {
       return (
         <table>
-          <tr
-            className={`table mb-0 border-2 text-xl bg-slate-300 border-black`}
-          >
+          <tr className={`table mb-0 border-2 text-xl bg-green-700 border-black`}>
             <td>
               {dtoClientes.nomeDoCliente} - {dtoClientes.telefoneDoCliente}
               <button

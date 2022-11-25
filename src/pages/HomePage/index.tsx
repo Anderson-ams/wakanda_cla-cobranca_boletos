@@ -238,7 +238,7 @@ function HomePage() {
 
       {/* Container que engloba a pré-visualização das tabelas/dados */}
       <Container maxWidth="xl">
-        <Box className={`border-black -mb-14 border-solid border-2 mt-9`}>
+        <Box className={`border-black -mb-14 border-solid border-2 mt-6`}>
           <section className={`flex-grow `}>
             <div className="div_botao-vencimento">
               <button onClick={manipuladorParaAbrirFiltroData} className="botao_filtro-vencimento">
@@ -270,11 +270,11 @@ function HomePage() {
               </Modal>
             </div>
             {/*Texto do Cabeçalho (Relatório de títulos em atraso) */}
-            <div className={`flex justify-center -mt-11 bg-slate-300`}>
+            <div className={`flex justify-center -mt-11`}>
               <TituloTabela />
             </div>
             {/* Caixa de pre-vizualização das tabelas/dados */}
-            <section className={` overflow-auto h-80 border-solid border-1`}>
+            <section className={`overflow-auto h-80 border-solid border-1`}>
               <LayoutTabela>
                 <TabelaDTO clienteAgregados={clienteDTO} clienteSelecionado={clienteSelecionado}></TabelaDTO>
               </LayoutTabela>
