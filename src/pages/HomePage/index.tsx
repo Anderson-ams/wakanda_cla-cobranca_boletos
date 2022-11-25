@@ -82,7 +82,8 @@ function HomePage() {
     const data = {
       data: fileBase64.replace("text/csv,", ""),
     };
-      axios.post(
+    axios.post(
+/*é possível também, ao invés de concatenar o id fazer uma interpolação, como está abaixo */
         `gestao-de-cobranca/api/v1/cliente/${idCliente}/boleto/cadastro-boletos`,data
       ).then((res) => {
         /* Coloque aqui Swal alert de confirmação de import */
@@ -139,7 +140,7 @@ function HomePage() {
   const setFiltroDataTabela =
     useSetRecoilState<IFiltroDeTabela>(filtroDeTabela);
   const handleTeste = (evento: React.FormEvent<HTMLFormElement>) => {
-    // evento.preventDefault()
+    evento.preventDefault()
     console.log(setData, data);
   };
 
@@ -149,9 +150,9 @@ function HomePage() {
   }
   return (
     <>
-      <section className="div_botao_importa-vendedor">
+      <section className="section_botao_importa-vendedor-cliente-titulos">
         {/*Botão de import CSV*/}
-        <button onClick={manipuladorParaAbrirImport} className="botao_importa">
+        <button onClick={manipuladorParaAbrirImport} className="botao_importa-titulos">
           Importar Titulos
         </button>
         {/*Modal de import CSV*/}
@@ -165,18 +166,15 @@ function HomePage() {
                 className="w-96 text-sm flex justify-center h-14 pt-3"
               />
               <div className="flex justify-center mt-36">
-                <button  className="w-28 bg-none">
-                  Importar
+                <button  className="w-36 bg-green-700 active:bg-green-600 text-gray-100 font-bold">
+                  IMPORTA CSV
                 </button>
               </div>
             </form>
           </Box>
         </Modal>
         {/*Botão para o filtro de vendedor por nome*/}
-        <button
-          onClick={handlerOpenModalFiltroVendedor}
-          className="botao_vendedor"
-        >
+        <button onClick={handlerOpenModalFiltroVendedor} className="botao_vendedor">
           Vendedor
         </button>
         {/*Modal de filtro Vendedor*/}
@@ -191,27 +189,63 @@ function HomePage() {
               className="w-96  h-14 flex justify-center text-center"
             />
             <div className="flex justify-center mt-36">
-              <button className="w-28">Filtrar</button>
+              <button className="w-28 bg-green-700 active:bg-green-600 text-gray-100 font-bold">FILTRAR</button>
             </div>
           </Box>
         </Modal>
+        {/*Botão para o filtro por Cliente*/}
+        <div >
+          <button className="botao_cliente" onClick={handlerOpenModalFiltroCliente}>Cliente</button>
+          <Modal open={abrirModal_FiltroCliente} onClose={handlerCloseModalFiltroCliente}>
+            <Box sx={estiloModal}>
+              <p className="text-3xl font-serif mb-8 -mt-6 text-center">
+                Filtrar por Cliente
+                <hr />
+              </p>
+              <input
+                type="text"
+                placeholder="Insira o nome do Cliente"
+                className="w-96  h-14 flex justify-center text-center"
+              />
+              <div className="flex justify-center mt-28">
+                <button className="w-28 bg-green-700 active:bg-green-600 text-gray-100 font-bold">FILTRAR</button>
+              </div>
+            </Box>
+          </Modal>
+        </div>
+        {/*Botão para o filtro por Cliente*/}
+        <div>
+          <button className="botao_titulo" onClick={handlerOpenModalFiltroTitulos} >Titulo</button>
+          <Modal open={abrirModal_FiltroTitulos} onClose={handlerCloseModalFiltroTitulos}>
+            <Box sx={estiloModal}>
+              <p className="text-3xl font-serif mb-8 -mt-6 text-center">
+                Filtrar por Titulos
+                <hr />
+              </p>
+              <input
+                type="text"
+                placeholder="Insira o numero do Titulo"
+                className="w-96  h-14 flex justify-center text-center"
+              />
+              <div className="flex justify-center mt-28">
+                <button className="w-28 bg-green-700 active:bg-green-600 text-gray-100 font-bold">FILTRAR</button>
+              </div>
+            </Box>
+          </Modal>
+        </div>
+
       </section>
 
+      {/* Container que engloba a pré-visualização das tabelas/dados */}
       <Container maxWidth="xl">
         <Box className={`border-black -mb-14 border-solid border-2 mt-9`}>
           <section className={`flex-grow `}>
-            <div className="divBotaoFiltro">
-              <button
-                onClick={manipuladorParaAbrirFiltroData}
-                className="botao_filtro"
-              >
-                Filtrar data inicial/vencimento
+            <div className="div_botao-vencimento">
+              <button onClick={manipuladorParaAbrirFiltroData} className="botao_filtro-vencimento">
+                Vencimento
               </button>
-              {/*Modal do Filtro por Data*/}
-              <Modal
-                open={abrirModal_filtroData}
-                onClose={manipuladorParaFecharFiltroData}
-              >
+              {/*Modal do Filtro Vencimento*/}
+              <Modal open={abrirModal_filtroData} onClose={manipuladorParaFecharFiltroData}>
                 <Box sx={estiloModal}>
                   <form className={` flex-wrap `} onSubmit={handleTeste}>
                     <p className="text-3xl font-serif mb-8 -mt-6 text-center">
@@ -235,7 +269,7 @@ function HomePage() {
                 </Box>
               </Modal>
             </div>
-            {/*Titulo (Relatório de títulos em atraso) */}
+            {/*Texto do Cabeçalho (Relatório de títulos em atraso) */}
             <div className={`flex justify-center -mt-11 bg-slate-300`}>
               <TituloTabela />
             </div>
@@ -248,53 +282,8 @@ function HomePage() {
           </section>
         </Box>
       </Container>
-      <section className="botoes_Cliente-Titulo">
-        <div>
-          <Botao onClick={handlerOpenModalFiltroCliente}>Cliente</Botao>
-          <Modal
-            open={abrirModal_FiltroCliente}
-            onClose={handlerCloseModalFiltroCliente}
-          >
-            <Box sx={estiloModal}>
-              <p className="text-3xl font-serif mb-8 -mt-6 text-center">
-                Filtrar por Cliente
-                <hr />
-              </p>
-              <input
-                type="text"
-                placeholder="Insira o nome do Cliente"
-                className="w-96  h-14 flex justify-center text-center"
-              />
-              <div className="flex justify-center mt-28">
-                <button className="w-28">Filtrar</button>
-              </div>
-            </Box>
-          </Modal>
-        </div>
-        <div>
-          <Botao onClick={handlerOpenModalFiltroTitulos}>Titulo</Botao>
-          <Modal
-            open={abrirModal_FiltroTitulos}
-            onClose={handlerCloseModalFiltroTitulos}
-          >
-            <Box sx={estiloModal}>
-              <p className="text-3xl font-serif mb-8 -mt-6 text-center">
-                Filtrar por Titulos
-                <hr />
-              </p>
-              <input
-                type="text"
-                placeholder="Insira o numero do Titulo"
-                className="w-96  h-14 flex justify-center text-center"
-              />
-              <div className="flex justify-center mt-28">
-                <button className="w-28">Filtrar</button>
-              </div>
-            </Box>
-          </Modal>
-        </div>
-      </section>
-      {/* <button onClick={test} >BotãoTeste</button> */}
+      {/*Fim Containner---------------------------*/}
+
     </>
   );
 }

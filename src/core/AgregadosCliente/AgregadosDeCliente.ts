@@ -5,7 +5,7 @@ export default class AgregadosDeClientes {
     private documento: string
     private parcela: string
     private saldoDevedor: number
-    private dataVencimento: string
+    private dataVencimento: string;
     private valorNegociado: number
     private anotacao: string
     private dataDeRetorno: string

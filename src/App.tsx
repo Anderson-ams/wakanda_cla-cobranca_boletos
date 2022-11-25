@@ -1,4 +1,4 @@
-import Toobar from './components/Cabecalho';
+import Cabecalho from './components/Cabecalho';
 import Rotas from './routes';
 import { RecoilRoot } from 'recoil'
 
@@ -6,7 +6,7 @@ import { RecoilRoot } from 'recoil'
 function App() {
     return (
         <RecoilRoot>
-            <Toobar />
+            <Cabecalho />
             <Rotas />
         </RecoilRoot>
     )

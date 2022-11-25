@@ -1,17 +1,21 @@
-import React from 'react'
-import style from './Toobar.module.scss'
-// import Logo from '../../assets/icons/logo-embreve-01-300x129.png'
+import styleCabecalho from './Cabecalho.module.scss'
+import logoNaturaves from '../../assets/icons/naturaves.png'
 
-function Toobar() {
+function Cabecalho() {
     return (
-        <header >
-            <div className={style.toBar}>
-                <a href="/" className={style.wakanda}>Gestão de Cobranca</a>
+        <>
+            <header >
+                <div className={styleCabecalho.toBar}>
+                    <div className={styleCabecalho.div_logoNaturaves}>
+                        <img src={logoNaturaves} className={styleCabecalho.logoNaturaves} />
+                    </div>
+                </div>
+            </header>
+            <div>
+            <p className={styleCabecalho.texto_cabecalho}>GESTÃO DE COBRANÇA</p>
             </div>
-            {/* Trabakhar com sgv é melhor */}
-            {/* <img src={Logo} alt="logoNaturaves" /> */}
-        </header>
+        </>
     )
 }
-export default Toobar
+export default Cabecalho
 

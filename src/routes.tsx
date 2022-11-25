@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import Cliente from './pages/Cliente';
 import Cobranca from './pages/Cobranca';
 import CollapsibleTable from './pages/PaginaTeste';
-import Toobar from './components/Cabecalho';
+import Cabecalho from './components/Cabecalho';
 
 export default function Rotas() {
     // const [nomeCliente, setNomeCliente] = useState("")
