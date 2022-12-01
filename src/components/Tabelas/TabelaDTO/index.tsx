@@ -18,7 +18,7 @@ function TabelaDTO(props: TabelaDTOProps, dtoClientes: AgregadosDeClientes) {
                 className="flex justify-center  float-right"
                 onClick={() => props.clienteSelecionado?.(dtoClientes)}
               >
-                {iconEdit}
+                {/* {iconEdit} */}
               </button>
             </td>
           </tr>

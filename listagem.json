@@ -1,0 +1,73 @@
+{
+  "clientes": [
+    {
+      "nomeCliente": "Zuefudek",
+      "telefone": "(62)2605-1777",
+      "documento": "33333333",
+      "parcela": "2X",
+      "saldoDevedor": 300,
+      "dataVencimento": "2022-10-11",
+      "valorNegociado": 150,
+      "anotação": "cliente ainda não pagou",
+      "dataDeRetorno": "2022-12-11"
+    },
+    {
+      "nomeCliente": "Usduric",
+      "telefone": "(98)3644-5766",
+      "documento": "4444444",
+      "parcela": "2X",
+      "saldoDevedor": 300,
+      "dataVencimento": "2022-10-12",
+      "valorNegociado": 150,
+      "anotação": "cliente ainda não pagou",
+      "dataDeRetorno": "2022-12-11"
+    },
+    {
+      "nomeCliente": "Isxiaim",
+      "telefone": "(65)2823-8483",
+      "documento": "5555555",
+      "parcela": "2X",
+      "saldoDevedor": 300,
+      "dataVencimento": "2022-10-12",
+      "valorNegociado": 150,
+      "anotação": "",
+      "dataDeRetorno": "2022-12-11"
+    },
+    {
+      "nomeCliente": "Liantuewi",
+      "telefone": "(95)2660-8912",
+      "documento": "66666666",
+      "parcela": "2X",
+      "saldoDevedor": 300,
+      "dataVencimento": "2022-10-11",
+      "valorNegociado": 150,
+      "anotação": "cliente ainda não pagou",
+      "dataDeRetorno": "2022-12-11"
+    },
+    {
+      "nomeCliente": "Gufim",
+      "telefone": "(67)2619-6632",
+      "documento": "77777777",
+      "parcela": "2X",
+      "saldoDevedor": 300,
+      "dataVencimento": "2022-09-14",
+      "valorNegociado": 150,
+      "anotação": "Cliente ruim",
+      "dataDeRetorno": "2022-12-11"
+    },
+    {
+      "nomeCliente": "Piadai",
+      "telefone": "(93) 2146-6316",
+      "documento": "8888888",
+      "parcela": "2X",
+      "saldoDevedor": 300,
+      "dataVencimento": "2022-09-13",
+      "valorNegociado": 150,
+      "anotação": "Cliente ruim",
+      "dataDeRetorno": "2022-12-11"
+    }
+  ]
+
+  
+}
+

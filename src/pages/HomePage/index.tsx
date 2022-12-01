@@ -158,7 +158,7 @@ function HomePage() {
         {/*Modal de import CSV*/}
         <Modal open={abrirModal_import} onClose={manipuladorParaFecharImport}>
           <Box sx={estiloModal}>
-            <form onSubmit={formSubmit}>
+            <form>
               <input
                 type="file"
                 accept=".csv"
