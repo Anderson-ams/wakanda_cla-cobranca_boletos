@@ -7,13 +7,12 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 
-import Botao from '../../components/Botao';
 import LayoutTabela from '../../components/Tabelas/LayoutTabela';
-import TabelaDTO from '../../components/Tabelas/TabelaDTO';
 import TituloTabela from '../../components/TituloTabela';
-import AgregadosDeClientes from '../../core/AgregadosCliente/AgregadosDeCliente';
+import IAgregadosDeClientes from '../../core/AgregadosCliente/AgregadosDeCliente';
 import { IFiltroDeTabela } from '../../utils/interfaces/IFiltroTabela';
 import { filtroDeTabela } from '../../utils/state/atom';
+import ListaDeDados from '../ListaDeDados/index';
 
 /*
     AL: COMPONENTE TABELA #2
@@ -33,41 +32,6 @@ const estiloModal = {
 };
 
 function HomePage() {
-  const clienteDTO = [
-    new AgregadosDeClientes(
-      "Zé",
-      "123456789",
-      "987654321",
-      "2",
-      100,
-      "01/01/2022",
-      70,
-      "Lorem ipsum dolor sitLorem ipsum dolor sit, amet consectetur adipisicing elit.",
-      "01/01/2001"
-    ),
-    new AgregadosDeClientes(
-      "Anderson Matos",
-      "123456789",
-      "987654321",
-      "2",
-      100,
-      "01/01/2022",
-      70,
-      "Lorem ipsum dolor sitLorem ipsum dolor sit, amet consectetur adipisicing elit.",
-      "01/01/2001"
-    ),
-    new AgregadosDeClientes(
-      "Rebeca Fernandes",
-      "7398247",
-      "987654321",
-      "2",
-      100,
-      "01/01/2022",
-      70,
-      "Lorem ipsum dolor sitLorem ipsum dolor sit, amet consectetur adipisicing elit.",
-      "01/01/2001"
-    )
-  ];
 
   /*Modal de import de CSV*/
   const [abrirModal_import, setAbrirModal_import] = useState(false);
@@ -144,8 +108,8 @@ function HomePage() {
     console.log(setData, data);
   };
 
-  function clienteSelecionado(cliente: AgregadosDeClientes){
-    console.log("Retorno: ",cliente.nomeDoCliente);
+  function clienteSelecionado(cliente: IAgregadosDeClientes){
+    console.log("Retorno: ",cliente.nomeCliente);
     
   }
   return (
@@ -158,7 +122,7 @@ function HomePage() {
         {/*Modal de import CSV*/}
         <Modal open={abrirModal_import} onClose={manipuladorParaFecharImport}>
           <Box sx={estiloModal}>
-            <form>
+            <form onSubmit={formSubmit}>
               <input
                 type="file"
                 accept=".csv"
@@ -276,7 +240,7 @@ function HomePage() {
             {/* Caixa de pre-vizualização das tabelas/dados */}
             <section className={`overflow-auto h-80 border-solid border-1`}>
               <LayoutTabela>
-                <TabelaDTO clienteAgregados={clienteDTO} clienteSelecionado={clienteSelecionado}></TabelaDTO>
+                <ListaDeDados />
               </LayoutTabela>
             </section>
           </section>
