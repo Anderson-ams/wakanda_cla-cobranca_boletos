@@ -1,3 +1,3 @@
-export interface IFiltroDeTabela {
+export default interface IFiltroTabela {
     data?: Date
 }

@@ -1,0 +1,59 @@
+.tableRowLine {
+  margin-bottom: 0px;
+  border-width: 2px;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  border-color: black;
+  background-color: #0c5b14;
+  color: white;
+}
+.containerCheck{
+  float: right;
+  margin-top: 4px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.inputCheck {
+  margin-right: -1.5rem; 
+  width: 1.40rem;
+  height: 1.40rem;
+  opacity: 0.1;
+  cursor: pointer;
+}
+.novaCheckbox {
+  position: static;
+  border: none;
+  float: right;
+  margin-top: 1px;
+  width: 1.50rem;
+  height: 1.50rem;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: rgb(222, 218, 218);
+}
+.containerCheck input:checked ~ .novaCheckbox {
+  background-color: #23ff39;
+}
+
+/* Desenho dentro da checkbox*/
+.containerCheck .novaCheckbox::after {
+  top: 10px;
+  margin-left: 7px;
+  width: 10px;
+  height: 17px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.novaCheckbox::after {
+  content: "";
+  display: none;
+}
+
+.containerCheck input:checked ~ .novaCheckbox::after {
+  display: block;
+}

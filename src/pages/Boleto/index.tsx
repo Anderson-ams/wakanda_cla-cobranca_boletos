@@ -9,11 +9,11 @@ import Botao from "../../components/Botao";
 import style from "./Boleto.module.scss";
 
 const Boleto = () => {
-  const [numeroBoleto, setNumeroBoleto] = useState("");
+  const [documento, setDocumento] = useState("");
   const opcoes = [{ texto: "" }, { texto: "1X" }, { texto: "2X" }];
-  const [numeroDaParcela, setNumeroParcela] = useState(opcoes[0].texto);
-  const [dataDoVencimento, setDataVencimento] = useState("");
-  const [valorDoBoleto, setValorBoleto] = useState("");
+  const [parcela, setParcela] = useState(opcoes[0].texto);
+  const [dataVencimento, setDataVencimento] = useState("");
+  const [saldoDevedor, setSaldoDevedor] = useState("");
   const selecione = [
     { texto: "" },
     { texto: "CESCONETTO" },
@@ -29,10 +29,10 @@ const Boleto = () => {
   const salvarDadoInput = (evento: React.FormEvent<HTMLFormElement>) => {
     evento.preventDefault();
     const data = {
-      numeroBoleto: numeroBoleto,
-      numeroDaParcela: numeroDaParcela,
-      dataDoVencimento: dataDoVencimento,
-      valorDoBoleto: valorDoBoleto,
+      documento: documento,
+      parcela: parcela,
+      dataVencimento: dataVencimento,
+      saldoDevedor: saldoDevedor,
       grupoEmpresarial: grupoEmpresarial,
     };
 
@@ -44,10 +44,10 @@ const Boleto = () => {
         setTimeout(() => {
           navigate("/cobranca");
         }, 2000);
-        setNumeroBoleto("");
-        setNumeroParcela("");
+        setDocumento("");
+        setParcela("");
         setDataVencimento("");
-        setValorBoleto("");
+        setSaldoDevedor("");
         setGrupoEmpresarial("");
       })
       .catch(() => {
@@ -60,10 +60,10 @@ const Boleto = () => {
       });
     console.log(
       "state:",
-      numeroBoleto,
-      numeroDaParcela,
-      dataDoVencimento,
-      valorDoBoleto,
+      documento,
+      parcela,
+      dataVencimento,
+      saldoDevedor,
       grupoEmpresarial
     );
   };
@@ -93,8 +93,8 @@ const Boleto = () => {
         <div>
           <label htmlFor="numero-boleto">NÚMERO DO BOLETO:</label>
           <input
-            value={numeroBoleto}
-            onChange={(e) => setNumeroBoleto(e.target.value)}
+            value={documento}
+            onChange={(e) => setDocumento(e.target.value)}
             type="number"
             name="numero-boleto"
             required
@@ -107,7 +107,7 @@ const Boleto = () => {
           </label>
           <select
             className={style.selectNumeroParcela}
-            onChange={(e) => setNumeroParcela(e.target.value)}
+            onChange={(e) => setParcela(e.target.value)}
             name="numero-parcela"
             required
           >
@@ -124,7 +124,7 @@ const Boleto = () => {
         <div className={style.inputDataVencimento}>
           <label htmlFor="data-venciamento-boleto">DATA DO VENCIMENTO:</label>
           <input
-            value={dataDoVencimento}
+            value={dataVencimento}
             onChange={(e) => setDataVencimento(e.target.value)}
             type="date"
             name="data-venciamento-boleto"
@@ -138,7 +138,7 @@ const Boleto = () => {
             VALOR DO BOLETO:
           </label>
           <CurrencyInput
-            onChange={(e) => setValorBoleto(e.target.value)}
+            onChange={(e) => setSaldoDevedor(e.target.value)}
             id="input-example"
             name="input-name"
             placeholder="valor"

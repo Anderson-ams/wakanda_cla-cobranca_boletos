@@ -1,13 +1,12 @@
 import { Box } from '@mui/material';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import TabelaDTO from '../../components/Tabelas/TabelaDTO';
-import IAgregadosDeClientes from '../../core/AgregadosCliente/AgregadosDeCliente';
+import TabelaDeAgregados from '../../components/Tabelas/TabelaDeAgregados';
+import IAgregadosDeClientes from '../../utils/interfaces/AgregadosDeCliente';
 
-// import { Container } from './styles';
 
 const ListaDeDados = () => {
-    const [lsitaDeClientes, setclientesAgregados] = useState<IAgregadosDeClientes[]>([])
+    const [listaDeClientes, setclientesAgregados] = useState<IAgregadosDeClientes[]>([])
 
     useEffect(() => {
         axios.get('http://localhost:3004/clientes')
@@ -17,12 +16,13 @@ const ListaDeDados = () => {
 
             })
     }, [])
+
     return (
 
         <Box className={` pt-4  w-screen  flex justify-center text-center`}>
             <div>
-                {lsitaDeClientes?.map((itens) => (
-                    <TabelaDTO lsitaDeClientes={itens} key={itens.documento} />
+                {listaDeClientes?.map((itens) => (
+                    <TabelaDeAgregados listaDeClientes={itens} key={itens.documento} />
                 ))}
             </div>
         </Box>

@@ -24,7 +24,7 @@ function Cobranca() {
       dataDeRetorno: dataDeRetorno,
     };
     await axios
-      .post("gestao-de-cobranca/api/v1/boleto/" + idBoleto + "/cobranca", data)
+      .post("gestao-de-cobranca/api/v1/cobranca/boleto/" + idBoleto, data)
       .then(() => {
         swal("INFORMAÇÕES SALVAS!", "SUCESSO", "success");
         setTimeout(() => {

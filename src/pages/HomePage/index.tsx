@@ -9,10 +9,11 @@ import { useSetRecoilState } from 'recoil';
 
 import LayoutTabela from '../../components/Tabelas/LayoutTabela';
 import TituloTabela from '../../components/TituloTabela';
-import IAgregadosDeClientes from '../../core/AgregadosCliente/AgregadosDeCliente';
-import { IFiltroDeTabela } from '../../utils/interfaces/IFiltroTabela';
-import { filtroDeTabela } from '../../utils/state/atom';
+import IFiltroTabela  from '../../utils/interfaces/IFiltroTabela';
 import ListaDeDados from '../ListaDeDados/index';
+import { filtroDeTabela } from '../../utils/state/atom';
+import IAgregadosDeClientes from '../../utils/interfaces/AgregadosDeCliente';
+import TabelaDeAgregados from '../../components/Tabelas/TabelaDeAgregados';
 
 /*
     AL: COMPONENTE TABELA #2
@@ -47,7 +48,6 @@ function HomePage() {
       data: fileBase64.replace("text/csv,", ""),
     };
     axios.post(
-/*é possível também, ao invés de concatenar o id fazer uma interpolação, como está abaixo */
         `gestao-de-cobranca/api/v1/cliente/${idCliente}/boleto/cadastro-boletos`,data
       ).then((res) => {
         /* Coloque aqui Swal alert de confirmação de import */
@@ -100,18 +100,15 @@ function HomePage() {
   // const navigate = useNavigate();
 
   /**func do calendario (Continuar no curso da alura)*/
+
   const [data, setData] = useState("");
-  const setFiltroDataTabela =
-    useSetRecoilState<IFiltroDeTabela>(filtroDeTabela);
-  const handleTeste = (evento: React.FormEvent<HTMLFormElement>) => {
-    evento.preventDefault()
-    console.log(setData, data);
+  const setFiltroDataTabela = useSetRecoilState<IAgregadosDeClientes>(filtroDeTabela);
+
+  const subFiltroData = (evento: React.FormEvent<HTMLFormElement>) => {
+    
   };
 
-  function clienteSelecionado(cliente: IAgregadosDeClientes){
-    console.log("Retorno: ",cliente.nomeCliente);
-    
-  }
+  
   return (
     <>
       <section className="section_botao_importa-vendedor-cliente-titulos">
@@ -211,7 +208,7 @@ function HomePage() {
               {/*Modal do Filtro Vencimento*/}
               <Modal open={abrirModal_filtroData} onClose={manipuladorParaFecharFiltroData}>
                 <Box sx={estiloModal}>
-                  <form className={` flex-wrap `} onSubmit={handleTeste}>
+                  <form className={` flex-wrap `} onSubmit={subFiltroData}>
                     <p className="text-3xl font-serif mb-8 -mt-6 text-center">
                       Coleque a data desejada
                       <hr />
@@ -227,7 +224,7 @@ function HomePage() {
                       />
                     </div>
                     <div className="flex justify-center mt-20 ">
-                      <button className={`w-28`}>Filtrar</button>
+                      <button className={`w-28 bg-green-700 active:bg-green-600 text-gray-100 font-bold`}>Filtrar</button>
                     </div>
                   </form>
                 </Box>
